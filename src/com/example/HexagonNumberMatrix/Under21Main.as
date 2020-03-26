@@ -683,14 +683,12 @@ public class Under21Main extends Sprite {
     while (true) {
       var i:int = (distance - startX) / 50;
       var j:int = (warehouseman.y - startY) / 50;
-
-      if (matrix[startLevel][i - 1][j] == 3) {
-        win = 1;
+      if (i < 1) {
+        win = -1;
         break;
       }
-
-      if (i <= 0) {
-        win = -1;
+      if (matrix[startLevel][i - 1][j] == 3) {
+        win = 1;
         break;
       }
 
@@ -745,6 +743,11 @@ public class Under21Main extends Sprite {
     while (true) {
       var i:int = (distance - startX) / 50;
       var j:int = (warehouseman.y - startY) / 50;
+
+      if ((i+1) >= 14){
+        win = -1;
+        break;
+      }
 
       if (matrix[startLevel][i + 1][j] == 3) {
         win = 1;
