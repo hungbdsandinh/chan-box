@@ -9,12 +9,21 @@
               <dependency linkage="Merged" />
             </entry>
           </entries>
-          <sdk name="SDK33" />
+          <sdk name="sdk32" />
         </dependencies>
         <compiler-options />
         <packaging-air-desktop />
         <packaging-android enabled="true" package-file-name="ChanBox" />
         <packaging-ios package-file-name="ChanBox" />
+      </configuration>
+      <configuration name="IOS_DEV" target-platform="Mobile" pure-as="true" main-class="com.example.HexagonNumberMatrix.Under21Main" output-file="IOS_DEV.swf" output-folder="$MODULE_DIR$/out/production/ChanBox">
+        <dependencies>
+          <sdk name="sdk32" />
+        </dependencies>
+        <compiler-options />
+        <packaging-air-desktop />
+        <packaging-android package-file-name="IOS_DEV" />
+        <packaging-ios enabled="true" package-file-name="IOS_DEV" />
       </configuration>
     </configurations>
     <compiler-options />
@@ -24,7 +33,7 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
     </content>
-    <orderEntry type="jdk" jdkName="SDK33" jdkType="Flex SDK Type (new)" />
+    <orderEntry type="jdk" jdkName="sdk32" jdkType="Flex SDK Type (new)" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library" exported="">
       <library type="flex">

@@ -30,12 +30,20 @@ import flash.utils.ByteArray;
 [SWF(width=960, height=620)]
 public class Under21Main extends Sprite {
 
+  [Embed(source="daythung/font/UTM AVOBOLD.TTF",
+          fontName="UTMfont",
+          mimeType = "application/x-font",
+          fontWeight="normal",
+          fontStyle="normal",
+          advancedAntiAliasing="true",
+          embedAsCFF="false")]
+  public const UTMfont:Class;
 
-  [Embed(source='art/right_arrow.png')]
+  [Embed(source='art/arrow_right.png')]
   private const BtnRight:Class;
-  [Embed(source='art/left_arrow.png')]
+  [Embed(source='art/arrow_left.png')]
   private const BtnLeft:Class;
-  [Embed(source='art/up_arrow.png')]
+  [Embed(source='art/arrow_up.png')]
   private const BtnUp:Class;
   [Embed(source='art/down_arrow.png')]
   private const BtnDown:Class;
@@ -431,7 +439,7 @@ public class Under21Main extends Sprite {
     formatText.size = 30;
     formatText.bold = true;
     formatText.color = "0xffffff";
-    formatText.font = "Verdana";
+    formatText.font = "UTMfont";
 
     levelText.autoSize = TextFieldAutoSize.CENTER;
     levelText.x = Consts.GAME_WIDTH / 2;
