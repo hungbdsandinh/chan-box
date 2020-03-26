@@ -83,7 +83,7 @@ public class Under21Main extends Sprite {
   private var widthBoard:int = 8;
   private var heightBoard:int = 14;
 
-  private var startLevel:int = 3;
+  private var startLevel:int = 1;
   private var win:int = 0;
 
   public var Consts = {
@@ -367,6 +367,16 @@ public class Under21Main extends Sprite {
   private var containers:Array = new Array(Container);
 
   public function Under21Main() {
+
+    var levelCurrent:int = getLocalStorage("levelCurrent");
+
+    if(levelCurrent){
+      startLevel = int(levelCurrent);
+    }
+    else{
+      saveLocalStorage("levelCurrent","1");
+    }
+
     welcomeGame();
   }
 
@@ -569,7 +579,7 @@ public class Under21Main extends Sprite {
     var levels:Array = new Array(Level);
 
     for (var i:int = 0; i < 28; i++) {
-      levels[i] = new Level(i + 1, true);
+      levels[i] = new Level(i + 1, i <= startLevel);
 
       levels[i].x = bg.x + ((Consts.GAME_WIDTH / 7 - levels[i].width) / 2) + (i % 7) * ((Consts.GAME_WIDTH - 100) / 7) + 45;
       levels[i].y = bg.y + (Consts.GAME_HEIGHT / 3 - levels[i].height) / 2 + (levels[i].height + 20) * (int(i / 7)) + 80;
