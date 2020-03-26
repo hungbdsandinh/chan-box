@@ -2,6 +2,8 @@ package com.example.HexagonNumberMatrix {
 
 import data.*;
 
+import flash.data.EncryptedLocalStore;
+
 import flash.display.BitmapData;
 import flash.display.PixelSnapping;
 
@@ -23,6 +25,7 @@ import com.greensock.TweenLite;
 
 import flash.display.DisplayObject;
 import flash.text.TextFieldAutoSize;
+import flash.utils.ByteArray;
 
 [SWF(width=960, height=620)]
 public class Under21Main extends Sprite {
@@ -943,6 +946,21 @@ public class Under21Main extends Sprite {
 
     } else {
       return scaledBitmap;
+    }
+  }
+
+  public static function saveLocalStorage(k:String, v:String):void {
+    var bytes:ByteArray = new ByteArray();
+    bytes.writeUTFBytes(v);
+    EncryptedLocalStore.setItem(k, bytes);
+  }
+
+  public static function getLocalStorage(k:String):* {
+    var storedValue:ByteArray = EncryptedLocalStore.getItem(k);
+    if (storedValue != null) {
+      return storedValue.readUTFBytes(storedValue.length)
+    } else {
+      return null;
     }
   }
 }
