@@ -461,7 +461,7 @@ public class Under21Main extends Sprite {
     var levelText:TextField = new TextField();
 
     var formatText:TextFormat = new TextFormat();
-    formatText.size = 30;
+    formatText.size = 40;
     formatText.bold = true;
     formatText.color = "0xffffff";
     formatText.font = "UTMfont";
@@ -471,7 +471,7 @@ public class Under21Main extends Sprite {
     levelText.y = 25;
     levelText.defaultTextFormat = formatText;
 
-    levelText.text = "Levels: " + (startLevel + 1);
+    levelText.text = "LEVEL " + (startLevel + 1);
     addChild(levelText);
 
     if(startLevel >= maxLevel){
@@ -537,14 +537,6 @@ public class Under21Main extends Sprite {
     addChild(buttonDown);
 
     if (startLevel == 0) {
-      var helpHand:DisplayObject = new Hand();
-      helpHand.scaleX = helpHand.scaleY = 0.6;
-
-      helpHand.x = startX + 185;
-      helpHand.y = bg.height - 150;
-
-      addChild(helpHand);
-
       var helpLine:DisplayObject = new Line();
       helpLine.scaleX = helpLine.scaleY = 0.9;
 
@@ -553,7 +545,32 @@ public class Under21Main extends Sprite {
 
       addChild(helpLine);
 
-      TweenLite.to(helpHand, .5, {x: helpHand.x + helpLine.width - helpHand.width, repeat: -1, repeatDelay: .5});
+      var formatTextHelp:TextFormat = new TextFormat();
+      formatTextHelp.size = 24;
+      formatTextHelp.bold = true;
+      formatTextHelp.color = "0xffffff";
+      formatTextHelp.font = "UTMfont";
+
+      var helpText1:TextField = new TextField();
+
+      helpText1.autoSize = TextFieldAutoSize.CENTER;
+      helpText1.x = helpLine.x+160;
+      helpText1.y = bg.height - 150;
+      helpText1.defaultTextFormat = formatTextHelp;
+
+      helpText1.text = "How to play: Use 4 control button";
+      addChild(helpText1);
+
+      var helpText2:TextField = new TextField();
+
+      helpText2.autoSize = TextFieldAutoSize.CENTER;
+      helpText2.defaultTextFormat = formatTextHelp;
+      helpText2.x = helpLine.x+160;
+      helpText2.y = bg.height - 120;
+
+      helpText2.text = "to move the green box to the key.";
+
+      addChild(helpText2);
     }
 
     for (var i:int = 0; i < heightBoard; i++) {
