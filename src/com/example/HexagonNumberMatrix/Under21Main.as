@@ -30,6 +30,14 @@ import flash.utils.ByteArray;
 [SWF(width=960, height=620)]
 public class Under21Main extends Sprite {
 
+  [Embed(source="daythung/font/UTM AVOBOLD.TTF",
+          fontName="UTMfont",
+          mimeType = "application/x-font",
+          fontWeight="normal",
+          fontStyle="normal",
+          advancedAntiAliasing="true",
+          embedAsCFF="false")]
+  public const UTMfont:Class;
 
   [Embed(source='art/right_arrow.png')]
   private const BtnRight:Class;
@@ -423,7 +431,6 @@ public class Under21Main extends Sprite {
     addChild(bg);
 
     var bgLevelsBack:DisplayObject = new BGLevelsBack();
-    bgLevelsBack.scaleX = bgLevelsBack.scaleY = 0.6;
 
     bgLevelsBack.x = 40;
     bgLevelsBack.y = 20;
@@ -455,7 +462,7 @@ public class Under21Main extends Sprite {
     formatText.size = 30;
     formatText.bold = true;
     formatText.color = "0xffffff";
-    formatText.font = "Verdana";
+    formatText.font = "UTMfont";
 
     levelText.autoSize = TextFieldAutoSize.CENTER;
     levelText.x = Consts.GAME_WIDTH / 2;
@@ -577,7 +584,6 @@ public class Under21Main extends Sprite {
     addChild(bg);
 
     var bgLevelsBack:DisplayObject = new BGLevelsBack();
-    bgLevelsBack.scaleX = bgLevelsBack.scaleY = 0.65;
 
     bgLevelsBack.x = 60;
     bgLevelsBack.y = 25;
@@ -892,18 +898,16 @@ public class Under21Main extends Sprite {
 
     function drawHomeButton():void {
       var home:DisplayObject = new Home();
-      home.scaleX = 0.8;
-      home.scaleY = 0.8;
 
       homeBtn.graphics.clear();
       homeBtn.graphics.beginFill(0x5D527D, 0);
       homeBtn.graphics.drawRect(0, 0, home.width, home.height);
-      homeBtn.x = (bg.width) / 2 - homeBtn.width - 20;
+      homeBtn.x = bg.x + (bg.width - homeBtn.width) / 2 - home.width - 30;
       homeBtn.y = bg.height - 170;
       homeBtn.graphics.endFill();
       homeBtn.buttonMode = true;
 
-      home.x = homeBtn.x - 30;
+      home.x = homeBtn.x;
       home.y = homeBtn.y;
 
       addChild(home);
@@ -912,13 +916,10 @@ public class Under21Main extends Sprite {
     function drawReloadButton():void {
       var reload:DisplayObject = new Reload();
 
-      reload.scaleX = 0.8;
-      reload.scaleY = 0.8;
-
       reloadBtn.graphics.clear();
       reloadBtn.graphics.beginFill(0x5D527D, 0);
       reloadBtn.graphics.drawRect(0, 0, 100, 50);
-      reloadBtn.x = (bg.width) / 2 + nextBtn.width / 2 + 20;
+      reloadBtn.x = bg.x + (bg.width + reloadBtn.width) / 2 + 30;
       reloadBtn.y = bg.height - 170;
       reloadBtn.graphics.endFill();
       reloadBtn.buttonMode = true;
@@ -933,15 +934,13 @@ public class Under21Main extends Sprite {
       nextBtn.graphics.clear();
       nextBtn.graphics.beginFill(0x5D527D, 0);
       nextBtn.graphics.drawRect(0, 0, 100, 50);
-      nextBtn.x = (bg.width) / 2;
+      nextBtn.x = bg.x + (bg.width - nextBtn.width) / 2;
       nextBtn.y = bg.height - 170;
       nextBtn.graphics.endFill();
       nextBtn.buttonMode = true;
       var next:DisplayObject = new Next();
-      next.x = nextBtn.x - 30;
+      next.x = nextBtn.x;
       next.y = nextBtn.y;
-      next.scaleX = 0.8;
-      next.scaleY = 0.8;
       addChild(next);
     }
 
