@@ -27,7 +27,7 @@ public class Level extends Sprite{
   public function Level(lv: Number,unlock: Boolean) {
     this.lv = lv;
     lvTxt.text = lv.toString();
-    imgLv.scaleX = imgLv.scaleY = .5;
+    imgLv.scaleX = imgLv.scaleY = .3;
 
     var formatText:TextFormat = new TextFormat();
     formatText.size = 60;

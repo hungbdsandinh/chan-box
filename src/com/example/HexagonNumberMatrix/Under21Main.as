@@ -432,8 +432,10 @@ public class Under21Main extends Sprite {
 
     var bgLevelsBack:DisplayObject = new BGLevelsBack();
 
-    bgLevelsBack.x = 40;
-    bgLevelsBack.y = 20;
+    bgLevelsBack.x = 50;
+    bgLevelsBack.y = 35;
+
+    bgLevelsBack.scaleX = bgLevelsBack.scaleY = .8;
 
     var buttonBack:Button = new Button(40, 15, mouseGoToWelcomeHandler);
 
@@ -442,15 +444,15 @@ public class Under21Main extends Sprite {
 
     addChild(buttonBack);
 
-    volumeOff.x = Consts.GAME_WIDTH - 100;
-    volumeOff.y = 20;
+    volumeOff.x = Consts.GAME_WIDTH - 120;
+    volumeOff.y = 35;
 
     addChild(volumeOff);
 
     volumeOff.addEventListener(MouseEvent.CLICK, mouseSoundOnHandler);
 
-    volumeOn.x = Consts.GAME_WIDTH - 100;
-    volumeOn.y = 20;
+    volumeOn.x = Consts.GAME_WIDTH - 120;
+    volumeOn.y = 35;
 
     addChild(volumeOn);
 
@@ -466,7 +468,7 @@ public class Under21Main extends Sprite {
 
     levelText.autoSize = TextFieldAutoSize.CENTER;
     levelText.x = Consts.GAME_WIDTH / 2;
-    levelText.y = 10;
+    levelText.y = 25;
     levelText.defaultTextFormat = formatText;
 
     levelText.text = "Levels: " + (startLevel + 1);
@@ -489,8 +491,8 @@ public class Under21Main extends Sprite {
     var btnRight:DisplayObject = new BtnRight();
     btnRight.scaleX = btnRight.scaleY = 0.9;
 
-    btnRight.x = Consts.GAME_WIDTH - 110;
-    btnRight.y = Consts.GAME_HEIGHT - btnRight.height - 100;
+    btnRight.x = Consts.GAME_WIDTH - 140;
+    btnRight.y = Consts.GAME_HEIGHT - btnRight.height - 130;
 
     addChild(btnRight);
 
@@ -501,8 +503,8 @@ public class Under21Main extends Sprite {
     var btnUp:DisplayObject = new BtnUp();
     btnUp.scaleX = btnUp.scaleY = 0.9;
 
-    btnUp.x = Consts.GAME_WIDTH - btnUp.width - 110;
-    btnUp.y = Consts.GAME_HEIGHT - btnRight.height - btnUp.height - 100;
+    btnUp.x = Consts.GAME_WIDTH - btnUp.width - 140;
+    btnUp.y = Consts.GAME_HEIGHT - btnRight.height - btnUp.height - 130;
 
     addChild(btnUp);
 
@@ -513,8 +515,8 @@ public class Under21Main extends Sprite {
     var btnLeft:DisplayObject = new BtnLeft();
     btnLeft.scaleX = btnLeft.scaleY = 0.9;
 
-    btnLeft.x = Consts.GAME_WIDTH - btnUp.width - btnLeft.width - 110;
-    btnLeft.y = Consts.GAME_HEIGHT - btnLeft.height - 100;
+    btnLeft.x = Consts.GAME_WIDTH - btnUp.width - btnLeft.width - 140;
+    btnLeft.y = Consts.GAME_HEIGHT - btnLeft.height - 130;
 
     addChild(btnLeft);
 
@@ -525,8 +527,8 @@ public class Under21Main extends Sprite {
     var btnDown:DisplayObject = new BtnDown();
     btnDown.scaleX = btnDown.scaleY = 0.9;
 
-    btnDown.x = Consts.GAME_WIDTH - btnDown.width - 110;
-    btnDown.y = Consts.GAME_HEIGHT - 100;
+    btnDown.x = Consts.GAME_WIDTH - btnDown.width - 140;
+    btnDown.y = Consts.GAME_HEIGHT - 130;
 
     addChild(btnDown);
 
@@ -581,12 +583,15 @@ public class Under21Main extends Sprite {
 
     var bg:Bitmap = new BGLevels();
     bg = getFitImage(bg, Consts.GAME_WIDTH, Consts.GAME_HEIGHT);
+
     addChild(bg);
 
     var bgLevelsBack:DisplayObject = new BGLevelsBack();
 
     bgLevelsBack.x = 60;
-    bgLevelsBack.y = 25;
+    bgLevelsBack.y = 20;
+
+    bgLevelsBack.scaleX = bgLevelsBack.scaleY = 0.8;
 
     var buttonBack:Button = new Button(40, 15, mouseGoToWelcomeHandler);
 
@@ -595,15 +600,15 @@ public class Under21Main extends Sprite {
 
     addChild(buttonBack);
 
-    volumeOff.x = Consts.GAME_WIDTH - 100;
-    volumeOff.y = 25;
+    volumeOff.x = Consts.GAME_WIDTH - 120;
+    volumeOff.y = 20;
 
     addChild(volumeOff);
 
     volumeOff.addEventListener(MouseEvent.CLICK, mouseSoundOnHandler);
 
-    volumeOn.x = Consts.GAME_WIDTH - 100;
-    volumeOn.y = 25;
+    volumeOn.x = Consts.GAME_WIDTH - 120;
+    volumeOn.y = 20;
 
     addChild(volumeOn);
 
@@ -611,11 +616,11 @@ public class Under21Main extends Sprite {
 
     var levels:Array = new Array(Level);
 
-    for (var i:int = 0; i < 28; i++) {
+    for (var i:int = 0; i < 24; i++) {
       levels[i] = new Level(i + 1, i < currentLevel);
 
-      levels[i].x = bg.x + ((Consts.GAME_WIDTH / 7 - levels[i].width) / 2) + (i % 7) * ((Consts.GAME_WIDTH - 100) / 7) + 45;
-      levels[i].y = bg.y + (Consts.GAME_HEIGHT / 3 - levels[i].height) / 2 + (levels[i].height + 20) * (int(i / 7)) + 80;
+      levels[i].x = bg.x + ((Consts.GAME_WIDTH / 6 - levels[i].width) / 2) + (i % 6) * ((Consts.GAME_WIDTH - 120) / 6) + 50;
+      levels[i].y = bg.y + (Consts.GAME_HEIGHT / 3 - levels[i].height) / 2 + (levels[i].height + 15) * (int(i / 6)) + 80;
 
       addChild(levels[i]);
 
@@ -902,13 +907,15 @@ public class Under21Main extends Sprite {
       homeBtn.graphics.clear();
       homeBtn.graphics.beginFill(0x5D527D, 0);
       homeBtn.graphics.drawRect(0, 0, home.width, home.height);
-      homeBtn.x = bg.x + (bg.width - homeBtn.width) / 2 - home.width - 30;
-      homeBtn.y = bg.height - 170;
+      homeBtn.x = bg.x + (bg.width - homeBtn.width) / 2 - home.width - 10;
+      homeBtn.y = bg.height - 200;
       homeBtn.graphics.endFill();
       homeBtn.buttonMode = true;
 
       home.x = homeBtn.x;
       home.y = homeBtn.y;
+
+      home.scaleX = home.scaleY = 0.8;
 
       addChild(home);
     }
@@ -920,12 +927,14 @@ public class Under21Main extends Sprite {
       reloadBtn.graphics.beginFill(0x5D527D, 0);
       reloadBtn.graphics.drawRect(0, 0, 100, 50);
       reloadBtn.x = bg.x + (bg.width + reloadBtn.width) / 2 + 30;
-      reloadBtn.y = bg.height - 170;
+      reloadBtn.y = bg.height - 200;
       reloadBtn.graphics.endFill();
       reloadBtn.buttonMode = true;
 
       reload.x = reloadBtn.x;
       reload.y = reloadBtn.y;
+
+      reload.scaleX = reload.scaleY = 0.8;
 
       addChild(reload);
     }
@@ -934,13 +943,16 @@ public class Under21Main extends Sprite {
       nextBtn.graphics.clear();
       nextBtn.graphics.beginFill(0x5D527D, 0);
       nextBtn.graphics.drawRect(0, 0, 100, 50);
-      nextBtn.x = bg.x + (bg.width - nextBtn.width) / 2;
-      nextBtn.y = bg.height - 170;
+      nextBtn.x = bg.x + (bg.width - nextBtn.width) / 2 + 5;
+      nextBtn.y = bg.height - 200;
       nextBtn.graphics.endFill();
       nextBtn.buttonMode = true;
       var next:DisplayObject = new Next();
       next.x = nextBtn.x;
       next.y = nextBtn.y;
+
+      next.scaleX = next.scaleY = 0.8;
+
       addChild(next);
     }
 
