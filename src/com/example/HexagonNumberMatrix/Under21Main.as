@@ -84,9 +84,12 @@ public class Under21Main extends Sprite {
   private var heightBoard:int = 14;
 
   private var startLevel:int = 1;
+  private var currentLevel:int = 1;
+  private var maxLevel:int = 16;
+
   private var win:int = 0;
 
-  public var Consts = {
+  public var Consts:Object = {
     GAME_WIDTH:960,
     GAME_HEIGHT:620
   };
@@ -262,7 +265,7 @@ public class Under21Main extends Sprite {
       [0, 0, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 3, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -359,6 +362,8 @@ public class Under21Main extends Sprite {
   public var winSound:* = new WinSound();
   public var moveSound:* = new MoveSound();
 
+  public var mute:Boolean = false;
+
   private var warehouseman:Warehouseman = new Warehouseman(0, 0);
 
   private var startX:int = 40;
@@ -368,13 +373,12 @@ public class Under21Main extends Sprite {
 
   public function Under21Main() {
 
-    var levelCurrent:int = getLocalStorage("levelCurrent");
+    currentLevel = int(getLocalStorage("currentLevel"));
 
-    if(levelCurrent){
-      startLevel = int(levelCurrent);
-    }
-    else{
-      saveLocalStorage("levelCurrent","1");
+    if(!currentLevel){
+      currentLevel = 1;
+
+      saveLocalStorage("currentLevel","1");
     }
 
     welcomeGame();
@@ -458,6 +462,20 @@ public class Under21Main extends Sprite {
 
     levelText.text = "Levels: " + (startLevel + 1);
     addChild(levelText);
+
+    if(startLevel >= maxLevel){
+      var comingSoonText:TextField = new TextField();
+
+      comingSoonText.autoSize = TextFieldAutoSize.CENTER;
+      comingSoonText.x = Consts.GAME_WIDTH / 2;
+      comingSoonText.y = Consts.GAME_HEIGHT / 2;
+      comingSoonText.defaultTextFormat = formatText;
+
+      comingSoonText.text = "Coming soon";
+      addChild(comingSoonText);
+
+      return;
+    }
 
     var btnRight:DisplayObject = new BtnRight();
     btnRight.scaleX = btnRight.scaleY = 0.9;
@@ -576,17 +594,21 @@ public class Under21Main extends Sprite {
 
     addChild(volume);
 
+    volume.addEventListener(MouseEvent.CLICK, mouseSoundHandler);
+
     var levels:Array = new Array(Level);
 
     for (var i:int = 0; i < 28; i++) {
-      levels[i] = new Level(i + 1, i <= startLevel);
+      levels[i] = new Level(i + 1, i < currentLevel);
 
       levels[i].x = bg.x + ((Consts.GAME_WIDTH / 7 - levels[i].width) / 2) + (i % 7) * ((Consts.GAME_WIDTH - 100) / 7) + 45;
       levels[i].y = bg.y + (Consts.GAME_HEIGHT / 3 - levels[i].height) / 2 + (levels[i].height + 20) * (int(i / 7)) + 80;
 
       addChild(levels[i]);
 
-      levels[i].addEventListener(MouseEvent.MOUSE_DOWN, onLoadGame);
+      if(i < currentLevel){
+        levels[i].addEventListener(MouseEvent.MOUSE_DOWN, onLoadGame);
+      }
     }
   }
 
@@ -595,7 +617,7 @@ public class Under21Main extends Sprite {
 
     loadGame();
 
-    moveSound.play();
+    playMoveSound();
   }
 
   private function mouseUpHandler(event:MouseEvent):void {
@@ -630,7 +652,7 @@ public class Under21Main extends Sprite {
 
     TweenLite.to(warehouseman, duration, {y: distance});
 
-    moveSound.play();
+    playMoveSound();
 
     TweenLite.delayedCall(duration+.2, winHandler);
 
@@ -678,7 +700,7 @@ public class Under21Main extends Sprite {
 
     TweenLite.to(warehouseman, duration, {y: distance});
 
-    moveSound.play();
+    playMoveSound();
 
     TweenLite.delayedCall(duration+.2, winHandler);
 
@@ -696,6 +718,10 @@ public class Under21Main extends Sprite {
     }
   }
 
+  private function mouseSoundHandler(event:MouseEvent):void {
+    mute = !mute;
+  }
+
   private function mouseLeftHandler(event:MouseEvent):void {
     var distance:int = warehouseman.x;
 
@@ -704,10 +730,12 @@ public class Under21Main extends Sprite {
     while (true) {
       var i:int = (distance - startX) / 50;
       var j:int = (warehouseman.y - startY) / 50;
+
       if (i < 1) {
         win = -1;
         break;
       }
+
       if (matrix[startLevel][i - 1][j] == 3) {
         win = 1;
         break;
@@ -724,7 +752,7 @@ public class Under21Main extends Sprite {
 
     TweenLite.to(warehouseman, duration, {x: distance});
 
-    moveSound.play();
+    playMoveSound();
 
     TweenLite.delayedCall(duration+.2, winHandler);
 
@@ -744,15 +772,23 @@ public class Under21Main extends Sprite {
 
   private function winHandler():void {
     if (win == 1) {
-      popupWin(new BGWin());
+      if(!mute){
+        winSound.play();
+      }
 
-      winSound.play();
+      if(startLevel >= currentLevel){
+        currentLevel++;
+
+        saveLocalStorage("levelCurrent",currentLevel.toString());
+      }
+
+      startLevel++;
+
+      popupWin(new BGWin());
     }
 
     if (win == -1) {
       popupWin(new BGLose());
-
-      winSound.play();
     }
   }
 
@@ -789,11 +825,9 @@ public class Under21Main extends Sprite {
 
     var duration:Number = .025 * ((distance - xStart) / 50);
 
-    trace((duration));
-
     TweenLite.to(warehouseman, duration, {x: distance});
 
-    moveSound.play();
+    playMoveSound();
 
     TweenLite.delayedCall(duration, winHandler);
 
@@ -814,13 +848,13 @@ public class Under21Main extends Sprite {
   private function mouseLevelHandler(event:MouseEvent):void {
     loadLevels();
 
-    moveSound.play();
+    playMoveSound();
   }
 
   private function mouseGoToWelcomeHandler(event:MouseEvent):void {
     welcomeGame();
 
-    moveSound.play();
+    playMoveSound();
   }
 
   private function popupWin(bg:Bitmap):void {
@@ -895,6 +929,10 @@ public class Under21Main extends Sprite {
     }
 
     function resetGameInPop(event:MouseEvent):void {
+      if(win == 1){
+        startLevel--;
+      }
+
       loadGame();
     }
 
@@ -903,9 +941,6 @@ public class Under21Main extends Sprite {
     }
 
     function nextLevelInPop(event:MouseEvent):void {
-      if (win == 1) {
-        startLevel++;
-      }
       loadGame();
     }
 
@@ -919,7 +954,11 @@ public class Under21Main extends Sprite {
     nextBtn.addEventListener(MouseEvent.MOUSE_DOWN, nextLevelInPop);
 
     drawHomeButton();
-    drawNextButton();
+
+    if(win == 1){
+      drawNextButton();
+    }
+
     drawReloadButton();
   }
 
@@ -970,18 +1009,24 @@ public class Under21Main extends Sprite {
     }
   }
 
-  public static function saveLocalStorage(k:String, v:String):void {
+  private static function saveLocalStorage(k:String, v:String):void {
     var bytes:ByteArray = new ByteArray();
     bytes.writeUTFBytes(v);
     EncryptedLocalStore.setItem(k, bytes);
   }
 
-  public static function getLocalStorage(k:String):* {
+  private static function getLocalStorage(k:String):* {
     var storedValue:ByteArray = EncryptedLocalStore.getItem(k);
     if (storedValue != null) {
       return storedValue.readUTFBytes(storedValue.length)
     } else {
       return null;
+    }
+  }
+
+  private function playMoveSound():void {
+    if(!mute){
+      moveSound.play();
     }
   }
 }
