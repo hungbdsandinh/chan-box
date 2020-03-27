@@ -39,11 +39,11 @@ public class Under21Main extends Sprite {
           embedAsCFF="false")]
   public const UTMfont:Class;
 
-  [Embed(source='art/arrow_right.png')]
+  [Embed(source='art/right_arrow.png')]
   private const BtnRight:Class;
-  [Embed(source='art/arrow_left.png')]
+  [Embed(source='art/left_arrow.png')]
   private const BtnLeft:Class;
-  [Embed(source='art/arrow_up.png')]
+  [Embed(source='art/up_arrow.png')]
   private const BtnUp:Class;
   [Embed(source='art/down_arrow.png')]
   private const BtnDown:Class;

@@ -126,23 +126,23 @@
 
     <!-- The icon the system uses for the application. For at least one resolution, specify the path to a PNG file included in the AIR package. Optional. -->
     <icon>
-        <image29x29>icon/Icon-29.png</image29x29>
-        <image36x36>icon/Icon-36.png</image36x36>
+<!--        <image29x29>icon/Icon.png</image29x29>-->
+<!--        <image36x36>icon/Icon-36.png</image36x36>-->
         <image40x40>icon/Icon-Small-40.png</image40x40>
-        <image48x48>icon/Icon-48.png</image48x48>
+<!--        <image48x48>icon/Icon-48.png</image48x48>-->
         <image50x50>icon/Icon-50.png</image50x50>
-        <image57x57>icon/Icon-57.png</image57x57>
+<!--        <image57x57>icon/Icon-57.png</image57x57>-->
         <image58x58>icon/Icon-Small@2x.png</image58x58>
         <image72x72>icon/Icon-72.png</image72x72>
         <image76x76>icon/Icon-76.png</image76x76>
         <image80x80>icon/Icon-Small-80.png</image80x80>
         <image87x87>icon/Icon-Small@3x.png</image87x87>
-        <image96x96>icon/Icon-96.png</image96x96>
         <image120x120>icon/Icon-120.png</image120x120>
         <image144x144>icon/Icon-144.png</image144x144>
         <image152x152>icon/Icon-152.png</image152x152>
         <image167x167>icon/Icon-167.png</image167x167>
-        <image512x512>icon/Icon-512.png</image512x512>
+        <image180x180>icon/Icon-180.png</image180x180>
+<!--        <image512x512>icon/Icon-512.png</image512x512>-->
         <image1024x1024>icon/Icon-1024.png</image1024x1024>
     </icon>
 
@@ -302,33 +302,33 @@
     </iPhone>
 
     <extensions>
-        <extensionID>com.myflashlab.air.extensions.firebase.auth</extensionID>
-        <extensionID>com.myflashlab.air.extensions.dependency.firebase.auth</extensionID>
-        <extensionID>com.myflashlab.air.extensions.facebook</extensionID>
-        <!--<extensionID>com.freshplanet.AirFacebook</extensionID>-->
-        <extensionID>com.mesmotronic.ane.fullscreen</extensionID>
-        <extensionID>sd.natives.ios.NativeExtension</extensionID>
-        <extensionID>com.ssd.ane.androidextensions</extensionID>
-        <extensionID>com.freshplanet.ane.AirInAppPurchase</extensionID>
-        <extensionID>com.myflashlab.air.extensions.udid</extensionID>
-        <!--ADD FireBase core -->
-        <extensionID>com.myflashlab.air.extensions.dependency.firebase.common</extensionID>
-        <extensionID>com.myflashlab.air.extensions.dependency.firebase.iid</extensionID>
-        <extensionID>com.myflashlab.air.extensions.dependency.googlePlayServices.appinvite</extensionID>
-        <extensionID>com.myflashlab.air.extensions.dependency.googlePlayServices.base</extensionID>
-        <extensionID>com.myflashlab.air.extensions.dependency.googlePlayServices.basement</extensionID>
-        <extensionID>com.myflashlab.air.extensions.dependency.googlePlayServices.tasks</extensionID>
-        <extensionID>com.myflashlab.air.extensions.dependency.overrideAir</extensionID>
-        <extensionID>com.myflashlab.air.extensions.dependency.androidSupport</extensionID>
+<!--        <extensionID>com.myflashlab.air.extensions.firebase.auth</extensionID>-->
+<!--        <extensionID>com.myflashlab.air.extensions.dependency.firebase.auth</extensionID>-->
+<!--        <extensionID>com.myflashlab.air.extensions.facebook</extensionID>-->
+<!--        &lt;!&ndash;<extensionID>com.freshplanet.AirFacebook</extensionID>&ndash;&gt;-->
+<!--        <extensionID>com.mesmotronic.ane.fullscreen</extensionID>-->
+<!--        <extensionID>sd.natives.ios.NativeExtension</extensionID>-->
+<!--        <extensionID>com.ssd.ane.androidextensions</extensionID>-->
+<!--        <extensionID>com.freshplanet.ane.AirInAppPurchase</extensionID>-->
+<!--        <extensionID>com.myflashlab.air.extensions.udid</extensionID>-->
+<!--        &lt;!&ndash;ADD FireBase core &ndash;&gt;-->
+<!--        <extensionID>com.myflashlab.air.extensions.dependency.firebase.common</extensionID>-->
+<!--        <extensionID>com.myflashlab.air.extensions.dependency.firebase.iid</extensionID>-->
+<!--&lt;!&ndash;        <extensionID>com.myflashlab.air.extensions.dependency.googlePlayServices.appinvite</extensionID>&ndash;&gt;-->
+<!--&lt;!&ndash;        <extensionID>com.myflashlab.air.extensions.dependency.googlePlayServices.base</extensionID>&ndash;&gt;-->
+<!--&lt;!&ndash;        <extensionID>com.myflashlab.air.extensions.dependency.googlePlayServices.basement</extensionID>&ndash;&gt;-->
+<!--&lt;!&ndash;        <extensionID>com.myflashlab.air.extensions.dependency.googlePlayServices.tasks</extensionID>&ndash;&gt;-->
+<!--        <extensionID>com.myflashlab.air.extensions.dependency.overrideAir</extensionID>-->
+<!--        <extensionID>com.myflashlab.air.extensions.dependency.androidSupport</extensionID>-->
 
-        <extensionID>com.myflashlab.air.extensions.firebase.core</extensionID>
+<!--        <extensionID>com.myflashlab.air.extensions.firebase.core</extensionID>-->
 
-        <!-- To support Firebase FCM -->
-        <extensionID>com.myflashlab.air.extensions.firebase.fcm</extensionID>
-        <extensionID>com.myflashlab.air.extensions.dependency.firebase.messaging</extensionID>
+<!--        &lt;!&ndash; To support Firebase FCM &ndash;&gt;-->
+<!--        <extensionID>com.myflashlab.air.extensions.firebase.fcm</extensionID>-->
+<!--        <extensionID>com.myflashlab.air.extensions.dependency.firebase.messaging</extensionID>-->
 
-        <extensionID>com.myflashlab.air.extensions.firebase.dynamicLinks</extensionID>
-        <extensionID>com.myflashlab.air.extensions.dependency.firebase.dynamicLinks</extensionID>
+<!--        <extensionID>com.myflashlab.air.extensions.firebase.dynamicLinks</extensionID>-->
+<!--        <extensionID>com.myflashlab.air.extensions.dependency.firebase.dynamicLinks</extensionID>-->
     </extensions>
 
 </application>
