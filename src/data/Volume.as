@@ -15,7 +15,7 @@ public class Volume extends Sprite {
 
     var bg:Bitmap = up ? new VolumeUp : new VolumeDown;
 
-    bg.scaleX = bg.scaleY = .65;
+//    bg.scaleX = bg.scaleY;
 
     addChild(bg);
   }
