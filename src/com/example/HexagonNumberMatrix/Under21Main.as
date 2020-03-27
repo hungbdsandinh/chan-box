@@ -363,6 +363,9 @@ public class Under21Main extends Sprite {
 
   private var containers:Array = new Array(Container);
 
+  private var volumeOn:Volume= new Volume(true);
+  private var volumeOff:Volume= new Volume(false);
+
   public function Under21Main() {
 
     currentLevel = int(getLocalStorage("currentLevel"));
@@ -423,7 +426,7 @@ public class Under21Main extends Sprite {
     bgLevelsBack.scaleX = bgLevelsBack.scaleY = 0.6;
 
     bgLevelsBack.x = 40;
-    bgLevelsBack.y = 5;
+    bgLevelsBack.y = 20;
 
     var buttonBack:Button = new Button(40, 15, mouseGoToWelcomeHandler);
 
@@ -432,12 +435,19 @@ public class Under21Main extends Sprite {
 
     addChild(buttonBack);
 
-    var volume:Volume = new Volume(true);
+    volumeOff.x = Consts.GAME_WIDTH - 100;
+    volumeOff.y = 20;
 
-    volume.x = Consts.GAME_WIDTH - 120;
-    volume.y = 5;
+    addChild(volumeOff);
 
-    addChild(volume);
+    volumeOff.addEventListener(MouseEvent.CLICK, mouseSoundOnHandler);
+
+    volumeOn.x = Consts.GAME_WIDTH - 100;
+    volumeOn.y = 20;
+
+    addChild(volumeOn);
+
+    volumeOn.addEventListener(MouseEvent.CLICK, mouseSoundOffHandler);
 
     var levelText:TextField = new TextField();
 
@@ -569,8 +579,8 @@ public class Under21Main extends Sprite {
     var bgLevelsBack:DisplayObject = new BGLevelsBack();
     bgLevelsBack.scaleX = bgLevelsBack.scaleY = 0.65;
 
-    bgLevelsBack.x = 70;
-    bgLevelsBack.y = 15;
+    bgLevelsBack.x = 60;
+    bgLevelsBack.y = 25;
 
     var buttonBack:Button = new Button(40, 15, mouseGoToWelcomeHandler);
 
@@ -579,14 +589,19 @@ public class Under21Main extends Sprite {
 
     addChild(buttonBack);
 
-    var volume:Volume = new Volume(true);
+    volumeOff.x = Consts.GAME_WIDTH - 100;
+    volumeOff.y = 25;
 
-    volume.x = Consts.GAME_WIDTH - 120;
-    volume.y = 15;
+    addChild(volumeOff);
 
-    addChild(volume);
+    volumeOff.addEventListener(MouseEvent.CLICK, mouseSoundOnHandler);
 
-    volume.addEventListener(MouseEvent.CLICK, mouseSoundHandler);
+    volumeOn.x = Consts.GAME_WIDTH - 100;
+    volumeOn.y = 25;
+
+    addChild(volumeOn);
+
+    volumeOn.addEventListener(MouseEvent.CLICK, mouseSoundOffHandler);
 
     var levels:Array = new Array(Level);
 
@@ -710,8 +725,18 @@ public class Under21Main extends Sprite {
     }
   }
 
-  private function mouseSoundHandler(event:MouseEvent):void {
+  private function mouseSoundOnHandler(event:MouseEvent):void {
     mute = !mute;
+
+    volumeOn.visible=true;
+    volumeOff.visible=false;
+  }
+
+  private function mouseSoundOffHandler(event:MouseEvent):void {
+    mute = !mute;
+
+    volumeOn.visible=false;
+    volumeOff.visible=true;
   }
 
   private function mouseLeftHandler(event:MouseEvent):void {
