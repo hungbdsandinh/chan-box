@@ -7,14 +7,14 @@ import flash.text.TextFormat;
 import flash.text.TextFieldAutoSize;
 
 public class Level extends Sprite{
-  [Embed(source="../com/example/HexagonNumberMatrix/daythung/font/UTM AVOBOLD.TTF",
-          fontName="UTMfont",
-          mimeType = "application/x-font",
-          fontWeight="normal",
-          fontStyle="normal",
-          advancedAntiAliasing="true",
-          embedAsCFF="false")]
-  public const UTMfont:Class;
+//  [Embed(source="../com/example/HexagonNumberMatrix/daythung/font/UTM_AVOBOLD.TTF",
+//          fontName="UTMfont",
+//          mimeType = "application/x-font",
+//          fontWeight="normal",
+//          fontStyle="normal",
+//          advancedAntiAliasing="true",
+//          embedAsCFF="false")]
+//  public const UTMfont:Class;
   [Embed(source='../com/example/HexagonNumberMatrix/daythung/cut_lv/lv.png')]
   public const Lv:Class;
   [Embed(source='../com/example/HexagonNumberMatrix/daythung/cut_lv/lock.png')]
@@ -27,13 +27,13 @@ public class Level extends Sprite{
   public function Level(lv: Number,unlock: Boolean) {
     this.lv = lv;
     lvTxt.text = lv.toString();
-    imgLv.scaleX = imgLv.scaleY = .3;
+    imgLv.scaleX = imgLv.scaleY = .1;
 
     var formatText:TextFormat = new TextFormat();
     formatText.size = 60;
     formatText.bold = true;
     formatText.color = "0xffffff";
-    formatText.font = "UTMfont";
+//    formatText.font = "UTMfont";
 
     imgLv = unlock ? new Lv : new Lock;
 

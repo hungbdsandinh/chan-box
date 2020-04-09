@@ -9,8 +9,6 @@ public class Container extends Sprite {
   [Embed(source='../com/example/HexagonNumberMatrix/daythung/cut_play/lock.png')]
   public const Lock:Class;
 
-  public var action:int;
-
   public function Container(x:int, y:int, _type:int) {
     graphics.clear();
 

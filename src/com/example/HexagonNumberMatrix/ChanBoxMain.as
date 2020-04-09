@@ -28,30 +28,28 @@ import flash.text.TextFieldAutoSize;
 import flash.utils.ByteArray;
 
 [SWF(width=960, height=620)]
-public class Under21Main extends Sprite {
+public class ChanBoxMain extends Sprite {
 
-  [Embed(source="daythung/font/UTM AVOBOLD.TTF",
-          fontName="UTMfont",
-          mimeType = "application/x-font",
-          fontWeight="normal",
-          fontStyle="normal",
-          advancedAntiAliasing="true",
-          embedAsCFF="false")]
-  public const UTMfont:Class;
+//  [Embed(source="daythung/font/UTM AVOBOLD.TTF",
+//          fontName="UTMfont",
+//          mimeType = "application/x-font",
+//          fontWeight="normal",
+//          fontStyle="normal",
+//          advancedAntiAliasing="true",
+//          embedAsCFF="false")]
+//  public const UTMfont:Class;
 
-  [Embed(source='art/right_arrow.png')]
+  [Embed(source='daythung/cut_play/phai.png')]
   private const BtnRight:Class;
-  [Embed(source='art/left_arrow.png')]
+  [Embed(source='daythung/cut_play/trai.png')]
   private const BtnLeft:Class;
-  [Embed(source='art/up_arrow.png')]
+  [Embed(source='daythung/cut_play/len.png')]
   private const BtnUp:Class;
-  [Embed(source='art/down_arrow.png')]
+  [Embed(source='daythung/cut_play/xuong.png')]
   private const BtnDown:Class;
-  [Embed(source='art/home_run.png')]
-  private const BtnHomeRun:Class;
   [Embed(source='daythung/menu/play.png')]
   private const BtnStart:Class;
-  [Embed(source='daythung/menu/bg_play.png')]
+  [Embed(source='daythung/menu/bg.png')]
   private const BGStart:Class;
   [Embed(source='daythung/cut_lv/bg.png')]
   private const BGLevels:Class;
@@ -61,17 +59,15 @@ public class Under21Main extends Sprite {
   private const BGLevelsBack:Class;
   [Embed(source='daythung/cut_play/huongdan1.png')]
   private const Line:Class;
-  [Embed(source='daythung/cut_play/huongdan2.png')]
-  private const Hand:Class;
   [Embed(source='daythung/cut_lv/volume.png')]
   private const BGVolume:Class;
   [Embed(source='img/ButtonClick.mp3')]
   private const MoveSound:Class;
   [Embed(source='img/Win.mp3')]
   private const WinSound:Class;
-  [Embed(source='daythung/cut_winlose/win.png')]
+  [Embed(source='daythung/cut_winlose/bg_win.png')]
   private const BGWin:Class;
-  [Embed(source='daythung/cut_winlose/lose.png')]
+  [Embed(source='daythung/cut_winlose/bg_lose.png')]
   private const BGLose:Class;
   [Embed(source='daythung/cut_winlose/match_replay_icon_777727.png')]
   private const Reload:Class;
@@ -160,10 +156,10 @@ public class Under21Main extends Sprite {
       [1, 0, 0, 0, 0, 0, 0, 4, 0],
       [0, 0, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 1, 0],
-      [0, 1, 0, 0, 0, 0, 0, 0, 0]
+      [0, 1, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0]
     ],
     [ //5
       [0, 0, 1, 0, 0, 4, 0, 0, 0],
@@ -175,10 +171,10 @@ public class Under21Main extends Sprite {
       [0, 0, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0],
       [1, 0, 0, 0, 0, 0, 0, 1, 0],
       [0, 0, 0, 0, 0, 1, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0, 0]
     ],
     [ //6
@@ -374,7 +370,7 @@ public class Under21Main extends Sprite {
   private var volumeOn:Volume= new Volume(true);
   private var volumeOff:Volume= new Volume(false);
 
-  public function Under21Main() {
+  public function ChanBoxMain() {
 
     currentLevel = int(getLocalStorage("currentLevel"));
 
@@ -432,8 +428,8 @@ public class Under21Main extends Sprite {
 
     var bgLevelsBack:DisplayObject = new BGLevelsBack();
 
-    bgLevelsBack.x = 50;
-    bgLevelsBack.y = 35;
+    bgLevelsBack.x = 30;
+    bgLevelsBack.y = 20;
 
     bgLevelsBack.scaleX = bgLevelsBack.scaleY = .8;
 
@@ -445,14 +441,14 @@ public class Under21Main extends Sprite {
     addChild(buttonBack);
 
     volumeOff.x = Consts.GAME_WIDTH - 120;
-    volumeOff.y = 35;
+    volumeOff.y = 20;
 
     addChild(volumeOff);
 
     volumeOff.addEventListener(MouseEvent.CLICK, mouseSoundOnHandler);
 
     volumeOn.x = Consts.GAME_WIDTH - 120;
-    volumeOn.y = 35;
+    volumeOn.y = 20;
 
     addChild(volumeOn);
 
@@ -464,7 +460,7 @@ public class Under21Main extends Sprite {
     formatText.size = 40;
     formatText.bold = true;
     formatText.color = "0xffffff";
-    formatText.font = "UTMfont";
+//    formatText.font = "UTMfont";
 
     levelText.autoSize = TextFieldAutoSize.CENTER;
     levelText.x = Consts.GAME_WIDTH / 2;
@@ -492,7 +488,7 @@ public class Under21Main extends Sprite {
     btnRight.scaleX = btnRight.scaleY = 0.9;
 
     btnRight.x = Consts.GAME_WIDTH - 140;
-    btnRight.y = Consts.GAME_HEIGHT - btnRight.height - 130;
+    btnRight.y = Consts.GAME_HEIGHT - btnRight.height - 90;
 
     addChild(btnRight);
 
@@ -503,8 +499,8 @@ public class Under21Main extends Sprite {
     var btnUp:DisplayObject = new BtnUp();
     btnUp.scaleX = btnUp.scaleY = 0.9;
 
-    btnUp.x = Consts.GAME_WIDTH - btnUp.width - 140;
-    btnUp.y = Consts.GAME_HEIGHT - btnRight.height - btnUp.height - 130;
+    btnUp.x = Consts.GAME_WIDTH - btnUp.width - 130;
+    btnUp.y = Consts.GAME_HEIGHT - btnRight.height - btnUp.height - 70;
 
     addChild(btnUp);
 
@@ -515,8 +511,8 @@ public class Under21Main extends Sprite {
     var btnLeft:DisplayObject = new BtnLeft();
     btnLeft.scaleX = btnLeft.scaleY = 0.9;
 
-    btnLeft.x = Consts.GAME_WIDTH - btnUp.width - btnLeft.width - 140;
-    btnLeft.y = Consts.GAME_HEIGHT - btnLeft.height - 130;
+    btnLeft.x = Consts.GAME_WIDTH - btnUp.width - btnLeft.width - 120;
+    btnLeft.y = Consts.GAME_HEIGHT - btnLeft.height - 90;
 
     addChild(btnLeft);
 
@@ -527,8 +523,8 @@ public class Under21Main extends Sprite {
     var btnDown:DisplayObject = new BtnDown();
     btnDown.scaleX = btnDown.scaleY = 0.9;
 
-    btnDown.x = Consts.GAME_WIDTH - btnDown.width - 140;
-    btnDown.y = Consts.GAME_HEIGHT - 130;
+    btnDown.x = Consts.GAME_WIDTH - btnDown.width - 130;
+    btnDown.y = Consts.GAME_HEIGHT - 110;
 
     addChild(btnDown);
 
@@ -549,7 +545,7 @@ public class Under21Main extends Sprite {
       formatTextHelp.size = 24;
       formatTextHelp.bold = true;
       formatTextHelp.color = "0xffffff";
-      formatTextHelp.font = "UTMfont";
+//      formatTextHelp.font = "UTMfont";
 
       var helpText1:TextField = new TextField();
 
@@ -617,14 +613,14 @@ public class Under21Main extends Sprite {
 
     addChild(buttonBack);
 
-    volumeOff.x = Consts.GAME_WIDTH - 120;
+    volumeOff.x = Consts.GAME_WIDTH - 140;
     volumeOff.y = 20;
 
     addChild(volumeOff);
 
     volumeOff.addEventListener(MouseEvent.CLICK, mouseSoundOnHandler);
 
-    volumeOn.x = Consts.GAME_WIDTH - 120;
+    volumeOn.x = Consts.GAME_WIDTH - 140;
     volumeOn.y = 20;
 
     addChild(volumeOn);
@@ -633,11 +629,11 @@ public class Under21Main extends Sprite {
 
     var levels:Array = new Array(Level);
 
-    for (var i:int = 0; i < 24; i++) {
+    for (var i:int = 0; i < 18; i++) {
       levels[i] = new Level(i + 1, i < currentLevel);
 
       levels[i].x = bg.x + ((Consts.GAME_WIDTH / 6 - levels[i].width) / 2) + (i % 6) * ((Consts.GAME_WIDTH - 120) / 6) + 50;
-      levels[i].y = bg.y + (Consts.GAME_HEIGHT / 3 - levels[i].height) / 2 + (levels[i].height + 15) * (int(i / 6)) + 80;
+      levels[i].y = bg.y + (Consts.GAME_HEIGHT / 3 - levels[i].height) / 2 + (levels[i].height + 30) * (int(i / 6)) + 100;
 
       addChild(levels[i]);
 
@@ -925,7 +921,7 @@ public class Under21Main extends Sprite {
       homeBtn.graphics.beginFill(0x5D527D, 0);
       homeBtn.graphics.drawRect(0, 0, home.width, home.height);
       homeBtn.x = bg.x + (bg.width - homeBtn.width) / 2 - home.width - 10;
-      homeBtn.y = bg.height - 200;
+      homeBtn.y = bg.height - 140;
       homeBtn.graphics.endFill();
       homeBtn.buttonMode = true;
 
@@ -944,7 +940,7 @@ public class Under21Main extends Sprite {
       reloadBtn.graphics.beginFill(0x5D527D, 0);
       reloadBtn.graphics.drawRect(0, 0, 100, 50);
       reloadBtn.x = bg.x + (bg.width + reloadBtn.width) / 2 + 30;
-      reloadBtn.y = bg.height - 200;
+      reloadBtn.y = bg.height - 140;
       reloadBtn.graphics.endFill();
       reloadBtn.buttonMode = true;
 
@@ -961,7 +957,7 @@ public class Under21Main extends Sprite {
       nextBtn.graphics.beginFill(0x5D527D, 0);
       nextBtn.graphics.drawRect(0, 0, 100, 50);
       nextBtn.x = bg.x + (bg.width - nextBtn.width) / 2 + 5;
-      nextBtn.y = bg.height - 200;
+      nextBtn.y = bg.height - 140;
       nextBtn.graphics.endFill();
       nextBtn.buttonMode = true;
       var next:DisplayObject = new Next();

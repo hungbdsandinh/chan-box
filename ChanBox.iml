@@ -2,7 +2,7 @@
 <module type="Flex" version="4">
   <component name="FlexBuildConfigurationManager" active="ChanBox">
     <configurations>
-      <configuration name="ChanBox" target-platform="Mobile" pure-as="true" main-class="com.example.HexagonNumberMatrix.Under21Main" output-file="ChanBox.swf" output-folder="$MODULE_DIR$/out/production/ChanBox">
+      <configuration name="ChanBox" target-platform="Mobile" pure-as="true" main-class="com.example.HexagonNumberMatrix.ChanBoxMain" output-file="ChanBox.swf" output-folder="$MODULE_DIR$/out/production/ChanBox">
         <dependencies target-player="32.0">
           <entries>
             <entry library-id="563499ae-53b1-42cc-b95f-233b2ff56264">
@@ -16,14 +16,14 @@
         <packaging-android enabled="true" package-file-name="ChanBox" />
         <packaging-ios package-file-name="ChanBox" />
       </configuration>
-      <configuration name="IOS_DEV" target-platform="Mobile" pure-as="true" main-class="com.example.HexagonNumberMatrix.Under21Main" output-file="IOS_DEV.swf" output-folder="$MODULE_DIR$/out/production/ChanBox">
+      <configuration name="IOS_DEV" target-platform="Mobile" pure-as="true" main-class="com.example.HexagonNumberMatrix.ChanBoxMain" output-file="IOS_DEV.swf" output-folder="$MODULE_DIR$/out/production/ChanBox">
         <dependencies>
           <entries>
             <entry library-id="755e73f6-fa5f-4366-a538-dbae764f7200">
               <dependency linkage="Merged" />
             </entry>
           </entries>
-          <sdk name="SDK33" />
+          <sdk name="AIR SDK" />
         </dependencies>
         <compiler-options />
         <packaging-air-desktop />
@@ -42,6 +42,34 @@
             <FilePathAndPathInPackage file-path="$MODULE_DIR$/assets/icon" path-in-package="icon" />
           </files-to-package>
           <AirSigningOptions keystore-path="$MODULE_DIR$/src/cer/Certificates_dev.p12" provisioning-profile-path="$MODULE_DIR$/src/cer/dev_profile.mobileprovision" />
+        </packaging-ios>
+      </configuration>
+      <configuration name="IOS_RELEASE" target-platform="Mobile" pure-as="true" main-class="com.example.HexagonNumberMatrix.ChanBoxMain" output-file="IOS_RELEASE.swf" output-folder="$MODULE_DIR$/out/production/ChanBox">
+        <dependencies>
+          <entries>
+            <entry library-id="cba733be-88e8-480d-bec1-7413c37457a0">
+              <dependency linkage="Merged" />
+            </entry>
+          </entries>
+          <sdk name="SDK33" />
+        </dependencies>
+        <compiler-options />
+        <packaging-air-desktop />
+        <packaging-android package-file-name="IOS_RELEASE" />
+        <packaging-ios enabled="true" use-generated-descriptor="false" custom-descriptor-path="$MODULE_DIR$/src/ios_release.xml" package-file-name="IOS_RELEASE">
+          <files-to-package>
+            <FilePathAndPathInPackage file-path="$MODULE_DIR$/IOSLoader/Default-568h@2x.png" path-in-package="Default-568h@2x.png" />
+            <FilePathAndPathInPackage file-path="$MODULE_DIR$/IOSLoader/Default-812h@3x~iphone.png" path-in-package="Default-812h@3x~iphone.png" />
+            <FilePathAndPathInPackage file-path="$MODULE_DIR$/IOSLoader/Default-Landscape-812h@3x~iphone.png" path-in-package="Default-Landscape-812h@3x~iphone.png" />
+            <FilePathAndPathInPackage file-path="$MODULE_DIR$/IOSLoader/Default-Landscape.png" path-in-package="Default-Landscape.png" />
+            <FilePathAndPathInPackage file-path="$MODULE_DIR$/IOSLoader/Default-LandscapeLeft@2x.png" path-in-package="Default-LandscapeLeft@2x.png" />
+            <FilePathAndPathInPackage file-path="$MODULE_DIR$/IOSLoader/Default-Portrait.png" path-in-package="Default-Portrait.png" />
+            <FilePathAndPathInPackage file-path="$MODULE_DIR$/IOSLoader/Default-Portrait@2x.png" path-in-package="Default-Portrait@2x.png" />
+            <FilePathAndPathInPackage file-path="$MODULE_DIR$/IOSLoader/Default@2x.png" path-in-package="Default@2x.png" />
+            <FilePathAndPathInPackage file-path="$MODULE_DIR$/assets/Assets.car" path-in-package="Assets.car" />
+            <FilePathAndPathInPackage file-path="$MODULE_DIR$/assets/icon" path-in-package="icon" />
+          </files-to-package>
+          <AirSigningOptions keystore-path="$MODULE_DIR$/src/cer/Certificates_IOS_RELEASE.p12" provisioning-profile-path="$MODULE_DIR$/src/cer/Provisioning_IOS_RELEASE.mobileprovision" />
         </packaging-ios>
       </configuration>
     </configurations>
@@ -67,6 +95,16 @@
     <orderEntry type="module-library" exported="">
       <library type="flex">
         <properties id="755e73f6-fa5f-4366-a538-dbae764f7200" />
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/libs/greensock-v12.1.5.swc!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library type="flex">
+        <properties id="cba733be-88e8-480d-bec1-7413c37457a0" />
         <CLASSES>
           <root url="jar://$MODULE_DIR$/libs/greensock-v12.1.5.swc!/" />
         </CLASSES>
